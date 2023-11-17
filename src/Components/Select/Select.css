@@ -41,8 +41,9 @@
   padding: 4px;
   color: #454545;
 }
-..selectionMenu .selectionList li .active {
-  background: #717171;
+.selectionMenu .selectionList li.active {
+  background: #c0c0c0;
+  color: #c13247e0;
 }
 .selectionMenu .selectionList li:hover {
   color: #c13247e0;
