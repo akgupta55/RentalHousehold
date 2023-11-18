@@ -1,11 +1,18 @@
 import "./Footer.css";
+import icon from "../assets/icon.png";
 
 function Footer() {
   return (
     <div className="footer">
       <div className="footer-content">
         <div className="footer-column">
-          <h3>Rental Household</h3>
+          <div className="company-logo">
+            <img src={icon} alt="" />
+            <span className="company-name">
+              Rental<span className="subName">Household</span>
+            </span>
+          </div>
+
           <ul>
             <li>
               <a href="#">About</a>

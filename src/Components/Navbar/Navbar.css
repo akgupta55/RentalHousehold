@@ -10,21 +10,34 @@
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16);
   background: #c13247e0;
 }
-
-.navbar img {
-  width: 70px;
-  height: 65px;
-  margin-left: 50px;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+.navbar .company-logo {
+  display: flex;
+  align-items: center;
 }
 
-.navbar .conatiner1 {
+.navbar .company-logo img {
+  padding-right: 4px;
+  width: 60px;
+  height: 60px;
+  margin-left: 30px;
+}
+
+.navbar .company-logo .company-name {
+  font-size: 20px;
+  font-weight: 800; /* Bold column headings */
+  color: #000;
+}
+.navbar .company-logo .company-name .subName {
+  font-size: 20px;
+  font-weight: 200;
+  color: #f2f2f2;
+}
+
+.navbar .container1 {
   position: relative;
-  margin-right: 50%;
+  margin-right: 15%;
 }
-.navbar .conatiner1 .search_box input {
+.navbar .container1 .search_box input {
   width: 200%;
   height: 40px;
   border: none;
@@ -38,10 +51,10 @@
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
-.navbar .conatiner1 .search_box input:hover {
+.navbar .container1 .search_box input:hover {
   background: #f2f2f2;
 }
-.navbar .conatiner1 .search_box .search_icon {
+.navbar .container1 .search_box .search_icon {
   position: absolute;
   top: 9px;
   left: 187%;
@@ -52,23 +65,60 @@
   display: flex;
   align-items: center;
   height: 40px;
-  width: 122px;
+  width: 125px;
   padding-left: 5px;
   position: absolute;
-  background: #f2f2f2;
+  border: 2px solid #000;
   border-radius: 3px;
   top: 23%;
-  left: 15%;
+  left: 23%;
   font-size: 18px;
-  color: #454545;
+  color: #f2f2f2;
   text-align: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .navbar .dropdown .selectionResult .SelectionArrow {
   position: absolute;
   top: 20%;
-  left: 80%;
+  left: 83%;
   opacity: 0.8;
+}
+
+.container2 {
+  display: inline-flex;
+  margin-right: 7%;
+}
+.container2 .cart {
+  display: inline-flex;
+  padding-right: 20px;
+}
+.container2 .cart .cartIcon {
+  height: 32px;
+  width: 32px;
+  color: #f2f2f2;
+}
+.container2 .cart h3 {
+  margin-top: 6px;
+  font-size: 17px;
+  color: #f2f2f2;
+  font-weight: 200;
+  padding-left: 4px;
+}
+
+.container2 .account {
+  display: inline-flex;
+  padding: 3px;
+  padding-right: 4px;
+  border: 2px solid #f2f2f2;
+  border-radius: 5px;
+}
+.container2 .accountIcon {
+  color: #f2f2f2;
+}
+.container2 .account h3 {
+  margin-top: 2px;
+  font-size: 17px;
+  color: #f2f2f2;
+  font-weight: 200;
+  padding-left: 4px;
 }
