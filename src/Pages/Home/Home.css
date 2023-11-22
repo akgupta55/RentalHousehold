@@ -1,0 +1,9 @@
+.home {
+  padding-top: 80px;
+}
+.home img {
+  width: 100%;
+  height: 380px;
+  border-radius: 12px;
+  padding-inline: 10px;
+}

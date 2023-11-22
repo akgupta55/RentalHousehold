@@ -1,8 +1,7 @@
 .footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  background: #c13247e0; /* White background */
+  padding-top: 40px;
+  background: #c13247; /* White background */
   /* Text color */
   padding: 20px 0;
 }
