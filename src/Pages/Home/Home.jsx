@@ -8,6 +8,7 @@ function Home() {
     <div className="home">
       <img src={banner} alt="" />
       <Categories />
+      <h2>more trading products</h2>
       <Services />
     </div>
   );
