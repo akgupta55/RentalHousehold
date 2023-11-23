@@ -5,7 +5,7 @@
   width: 150px;
   top: 74%;
   border-radius: 4px;
-  left: 22%;
+  left: 22.5%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -38,6 +38,9 @@
   border-radius: 3px;
 }
 .selectionMenu .selectionList li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 4px;
   color: #454545;
 }
