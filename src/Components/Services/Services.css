@@ -10,6 +10,13 @@
   position: absolute;
   top: -70px;
   left: 20px;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: "Libre Baskerville", serif;
+}
+.services h1::first-letter {
+  font-size: 43px;
+  color: #c13247;
 }
 
 .services .card-1,

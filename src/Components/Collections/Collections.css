@@ -1,0 +1,19 @@
+.collections {
+  margin-block: 50px;
+}
+.collections h1 {
+  font-size: 25px;
+  font-weight: 700;
+  font-family: "Libre Baskerville", serif;
+  padding-bottom: 30px;
+  padding-left: 16px;
+}
+.collections h1::first-letter {
+  font-size: 43px;
+  color: #c13247;
+}
+.collections .container {
+  height: 350px;
+  width: 100%;
+  background: #ababab;
+}
