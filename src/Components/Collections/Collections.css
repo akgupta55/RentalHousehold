@@ -1,19 +1,38 @@
 .collections {
-  margin-block: 50px;
+  width: 100%;
+  /* padding-left: 80px; */
 }
+
+.collections .card {
+  width: 98%;
+}
+
 .collections h1 {
+  padding-left: 22px;
   font-size: 25px;
   font-weight: 700;
   font-family: "Libre Baskerville", serif;
-  padding-bottom: 30px;
-  padding-left: 16px;
 }
+
 .collections h1::first-letter {
   font-size: 43px;
   color: #c13247;
 }
-.collections .container {
-  height: 350px;
+
+.slick-track {
   width: 100%;
-  background: #ababab;
+}
+
+.slick-slide > div {
+  padding-left: 30px;
+  width: 340px;
+  margin: 30px 30px;
+}
+
+.slick-slide > div:nth-child(1) {
+  margin-left: 0;
+}
+
+.slick-list {
+  margin-right: -30px;
 }
