@@ -1,10 +1,10 @@
-.prevArrow {
+.nextArrow {
   position: absolute;
-  right: 70px;
+  right: 60px;
   top: -44px;
 }
 
-.prevArrow .btn {
+.nextArrow .btn {
   display: grid;
   place-items: center;
   font-size: 22px;

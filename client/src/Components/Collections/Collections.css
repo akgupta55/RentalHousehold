@@ -19,20 +19,20 @@
   color: #c13247;
 }
 
-.slick-track {
+.collections .slick-track {
   width: 100%;
 }
 
-.slick-slide > div {
+.collections .slick-slide > div {
   padding-left: 30px;
-  width: 340px;
+  width: 320px;
   margin: 30px 30px;
 }
 
-.slick-slide > div:nth-child(1) {
+.collections .slick-slide > div:nth-child(1) {
   margin-left: 0;
 }
 
-.slick-list {
+.collections .slick-list {
   margin-right: -30px;
 }

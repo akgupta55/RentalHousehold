@@ -1,4 +1,5 @@
 .categories {
+  width: 100%;
   margin-block: 40px;
   display: flex;
   gap: 25px;
