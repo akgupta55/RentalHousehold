@@ -5,11 +5,12 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import Select from "../Select/Select";
+import { Link } from "react-router-dom";
 
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SettingsIcon from "@mui/icons-material/Settings";
-import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import LoginIcon from "@mui/icons-material/Login";
 import { Button } from "@mui/material";
 
 import { ClickAwayListener } from "@mui/base";
@@ -40,14 +41,21 @@ function Navbar() {
     setisOpenSelect(!isOpenSelect);
   };
 
+  const handleClick = () => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  };
+
   return (
     <div className="navbar">
-      <div className="company-logo">
-        <img src={icon} alt="" />
-        <span className="company-name">
-          Rental<span className="subName">Household</span>
-        </span>
-      </div>
+      <Link to="/" onClick={handleClick}>
+        <div className="company-logo">
+          <img src={icon} alt="" />
+          <span className="company-name">
+            Rental<span className="subName">Household</span>
+          </span>
+        </div>
+      </Link>
+
       <div className="dropdown1">
         <Select data={cityList} />
       </div>
@@ -70,7 +78,7 @@ function Navbar() {
         </div>
         <div className="account" onClick={openSelect}>
           <AccountCircleOutlinedIcon className="accountIcon" />
-          <h3>Account</h3>
+          <h3>Registration/Login</h3>
         </div>
 
         {isOpenSelect === true && (
@@ -100,9 +108,12 @@ function Navbar() {
                   </Button>
                 </li>
                 <li>
-                  <Button variant="text">
-                    <PowerSettingsNewIcon /> Logout
-                  </Button>
+                  <Link to="/register" onClick={handleClick}>
+                    <Button variant="text">
+                      <LoginIcon />
+                      &nbsp;Registration/Login
+                    </Button>
+                  </Link>
                 </li>
               </ul>
             </div>

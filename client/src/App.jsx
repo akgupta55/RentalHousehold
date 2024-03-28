@@ -1,16 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./Components/Footer/Footer";
-import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
 import Subcategories from "./Components/Subcategories/Subcategories";
+import Registration from "./Pages/Registration/Registration";
+import Pagenotfound from "./Pages/Pagenotfound/Pagenotfound";
 
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Registration />} />
         <Route
           path="/furniture"
           element={<Subcategories categories="furniture" />}
@@ -27,8 +27,8 @@ function App() {
           path="/packages"
           element={<Subcategories categories="packages" />}
         />
+        <Route path="*" element={<Pagenotfound />} />
       </Routes>
-      <Footer />
     </>
   );
 }

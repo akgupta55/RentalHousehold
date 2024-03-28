@@ -13,6 +13,7 @@
 .navbar .company-logo {
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
 
 .navbar .company-logo img {
@@ -23,9 +24,13 @@
 }
 
 .navbar .company-logo .company-name {
+  text-align: center;
   font-size: 20px;
   font-weight: 800; /* Bold column headings */
   color: #000;
+}
+.navbar a {
+  text-decoration: none;
 }
 .navbar .company-logo .company-name .subName {
   font-size: 20px;
@@ -55,7 +60,7 @@
 .navbar .container1 .search_box .search_icon {
   position: absolute;
   top: 9px;
-  left: 187%;
+  left: 183%;
   opacity: 0.4;
 }
 .navbar .dropdown1 .selectionResult {
@@ -69,7 +74,7 @@
   border: 2px solid #000;
   border-radius: 3px;
   top: 23%;
-  left: 23%;
+  left: 21%;
   font-size: 18px;
   color: #f2f2f2;
   text-align: center;
@@ -78,7 +83,7 @@
 .navbar .dropdown1 .selectionResult .SelectionArrow {
   position: absolute;
   top: 20%;
-  left: 83%;
+  left: 77%;
   opacity: 0.8;
 }
 
@@ -130,11 +135,11 @@
   position: absolute;
   background: #f2f2f2;
   margin-top: 5px;
-  width: 160px;
-  height: 180px;
+  width: 190px;
+  height: 200px;
   top: 100%;
   border-radius: 4px;
-  left: 29%;
+  left: 31%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
