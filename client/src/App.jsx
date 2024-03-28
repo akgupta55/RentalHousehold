@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Pages/Home/Home";
 import Subcategories from "./Components/Subcategories/Subcategories";
 import Registration from "./Pages/Registration/Registration";
+import Login from "./Pages/Registration/Login";
 import Pagenotfound from "./Pages/Pagenotfound/Pagenotfound";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/furniture"
           element={<Subcategories categories="furniture" />}

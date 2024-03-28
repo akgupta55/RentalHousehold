@@ -108,7 +108,7 @@ function Navbar() {
                   </Button>
                 </li>
                 <li>
-                  <Link to="/register" onClick={handleClick}>
+                  <Link to="/login" onClick={handleClick}>
                     <Button variant="text">
                       <LoginIcon />
                       &nbsp;Registration/Login
