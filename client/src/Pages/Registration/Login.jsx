@@ -4,10 +4,12 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Layout from "../../Components/Layout/Layout";
+import { useAuth } from "../../Context/Auth";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
 
@@ -19,14 +21,27 @@ const Registration = () => {
         password,
       });
       if (res && res.data.success) {
-        toast.success(res.data && res.data.message);
+        toast.success(res.data && res.data.message, {
+          position: "bottom-center",
+          duration: 12000,
+        });
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
         navigate("/");
       } else {
-        toast.error(res.data.message);
+        toast.error(res.data.message, {
+          position: "bottom-center",
+        });
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Something went wrong", {
+        position: "bottom-center",
+      });
     }
   };
 

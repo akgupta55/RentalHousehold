@@ -14,6 +14,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import { Button } from "@mui/material";
 
 import { ClickAwayListener } from "@mui/base";
+import { useAuth } from "../../Context/Auth";
+import { Logout } from "@mui/icons-material";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const cityList = [
@@ -44,6 +47,21 @@ function Navbar() {
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   };
+
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully", {
+      position: "bottom-center",
+      duration: 12000,
+    });
+  };
+
+  const [auth, setAuth] = useAuth();
 
   return (
     <div className="navbar">
@@ -76,10 +94,21 @@ function Navbar() {
           <ShoppingCartOutlinedIcon className="cartIcon" />
           <h3>Cart</h3>
         </div>
-        <div className="account" onClick={openSelect}>
-          <AccountCircleOutlinedIcon className="accountIcon" />
-          <h3>Registration/Login</h3>
-        </div>
+        {!auth.user ? (
+          <>
+            <div className="account" onClick={openSelect}>
+              <AccountCircleOutlinedIcon className="accountIcon" />
+              <h3>Registration/Login</h3>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="account" onClick={openSelect}>
+              <AccountCircleOutlinedIcon className="accountIcon" />
+              <h3>{auth.user.name}</h3>
+            </div>
+          </>
+        )}
 
         {isOpenSelect === true && (
           <ClickAwayListener
@@ -107,14 +136,29 @@ function Navbar() {
                     Settings
                   </Button>
                 </li>
-                <li>
-                  <Link to="/login" onClick={handleClick}>
-                    <Button variant="text">
-                      <LoginIcon />
-                      &nbsp;Registration/Login
-                    </Button>
-                  </Link>
-                </li>
+                {!auth.user ? (
+                  <>
+                    <li>
+                      <Link to="/login" onClick={handleClick}>
+                        <Button variant="text">
+                          <LoginIcon />
+                          &nbsp;Registration/Login
+                        </Button>
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link to="/login" onClick={handleLogout}>
+                        <Button variant="text">
+                          <Logout />
+                          &nbsp;Logout
+                        </Button>
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </ClickAwayListener>

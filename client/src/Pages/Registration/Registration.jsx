@@ -27,14 +27,21 @@ const Registration = () => {
         }
       );
       if (res && res.data.success) {
-        toast.success(res.data && res.data.message);
+        toast.success(res.data && res.data.message, {
+          position: "bottom-center",
+          duration: 12000,
+        });
         navigate("/login");
       } else {
-        toast.error(res.data.message);
+        toast.error(res.data.message, {
+          position: "bottom-center",
+        });
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Something went wrong", {
+        position: "bottom-center",
+      });
     }
   };
 
