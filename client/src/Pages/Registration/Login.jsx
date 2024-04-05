@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import Layout from "../../Components/Layout/Layout";
 import { useAuth } from "../../Context/Auth";
 
-const Registration = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
@@ -98,4 +98,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
