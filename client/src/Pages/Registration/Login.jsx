@@ -56,9 +56,9 @@ const Login = () => {
           <h1>LOGIN YOUR ACCOUNT</h1>
 
           <div className="box">
-            <label htmlFor="fname">Enter Email:</label>
             <input
               className="name"
+              placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -68,9 +68,9 @@ const Login = () => {
             />
           </div>
           <div className="box">
-            <label htmlFor="password">Enter Password:</label>
             <input
               type="password"
+              placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               id="password"
@@ -82,6 +82,17 @@ const Login = () => {
           <button type="submit" className="button">
             Submit
           </button>
+          <div className="box">
+            <button
+              type="button"
+              className="button"
+              onClick={() => {
+                navigate("/forgot-password");
+              }}
+            >
+              Forgot Password
+            </button>
+          </div>
           <br />
           <br />
           <div className="notice">

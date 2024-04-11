@@ -11,6 +11,7 @@ const Registration = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,6 +25,7 @@ const Registration = () => {
           password,
           phone,
           address,
+          answer,
         }
       );
       if (res && res.data.success) {
@@ -51,9 +53,9 @@ const Registration = () => {
         <div className="cn">
           <h1>CREATE AN ACCOUNT</h1>
           <div className="box">
-            <label htmlFor="fname">Enter Name:</label>
             <input
               className="name"
+              placeholder="Enter Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
@@ -63,9 +65,9 @@ const Registration = () => {
             />
           </div>
           <div className="box">
-            <label htmlFor="fname">Enter Email:</label>
             <input
               className="name"
+              placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -75,9 +77,9 @@ const Registration = () => {
             />
           </div>
           <div className="box">
-            <label htmlFor="password">Enter Password:</label>
             <input
               type="password"
+              placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               id="password"
@@ -86,9 +88,9 @@ const Registration = () => {
             />
           </div>
           <div className="box">
-            <label htmlFor="mobil">Enter Phone no.:</label>
             <input
               type="number"
+              placeholder="Enter Phone no."
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               id="fname"
@@ -97,11 +99,23 @@ const Registration = () => {
             />
           </div>
           <div className="box">
-            <label htmlFor="fname">Enter Address:</label>
             <input
               className="name"
+              placeholder="Enter Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              type="text"
+              id="fname"
+              name="fname"
+              required
+            />
+          </div>
+          <div className="box">
+            <input
+              className="name"
+              placeholder="What is your best sport ?"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
               type="text"
               id="fname"
               name="fname"
