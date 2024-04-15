@@ -4,12 +4,8 @@ import icon from "../assets/icon.png";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import Select from "../Select/Select";
 import { Link } from "react-router-dom";
 
-import PersonIcon from "@mui/icons-material/Person";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import SettingsIcon from "@mui/icons-material/Settings";
 import LoginIcon from "@mui/icons-material/Login";
 import { Button } from "@mui/material";
 
@@ -19,25 +15,6 @@ import { Logout } from "@mui/icons-material";
 import toast from "react-hot-toast";
 
 function Navbar() {
-  const cityList = [
-    "Bangalore",
-    "Mumbai",
-    "Pune",
-    "Delhi",
-    "Noida",
-    "Gurgaon",
-    "Hyderabad",
-    "Chennai",
-    "Ahmedabad",
-    "Mysore",
-    "Jaipur",
-    "Faridabad",
-    "Ghaziabad",
-    "Gandhinagar",
-    "Chandigarh",
-    "Kolkata",
-  ];
-
   const [isOpenSelect, setisOpenSelect] = useState(false);
 
   const openSelect = () => {
@@ -74,9 +51,6 @@ function Navbar() {
         </div>
       </Link>
 
-      <div className="dropdown1">
-        <Select data={cityList} />
-      </div>
       <div className="container1">
         <div className="search_box">
           <input
@@ -89,11 +63,12 @@ function Navbar() {
           </div>
         </div>
       </div>
+      <div className="cart">
+        <ShoppingCartOutlinedIcon className="cartIcon" />
+        <h3>Cart</h3>
+      </div>
+
       <div className="container2">
-        <div className="cart">
-          <ShoppingCartOutlinedIcon className="cartIcon" />
-          <h3>Cart</h3>
-        </div>
         {!auth.user ? (
           <>
             <div className="account" onClick={openSelect}>
@@ -119,22 +94,14 @@ function Navbar() {
             <div className="dropdown2">
               <ul>
                 <li>
-                  <Button variant="text">
-                    <PersonIcon />
-                    My Account
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="text">
-                    <FavoriteBorderIcon />
-                    My Wishlists
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="text">
-                    <SettingsIcon />
-                    Settings
-                  </Button>
+                  <Link
+                    to={`/dashboard/${
+                      auth?.user?.role === 1 ? "admin" : "user"
+                    }`}
+                    className="dropdown-item"
+                  >
+                    <Button variant="text">Dashboard</Button>
+                  </Link>
                 </li>
                 {!auth.user ? (
                   <>
