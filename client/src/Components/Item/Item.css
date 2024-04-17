@@ -32,7 +32,6 @@
   border-radius: 3px;
   font-size: 18px;
   font-weight: 500;
-  text-decoration: line-through;
 }
 .item:hover {
   transform: scale(1.05);

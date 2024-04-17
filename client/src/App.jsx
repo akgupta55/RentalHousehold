@@ -16,12 +16,16 @@ import Private from "./Components/Routes/Private";
 import Orders from "./Pages/User/Orders";
 import Profile from "./Pages/User/Profile";
 import Dashboard from "./Pages/User/Dashboard";
+import Products from "./Pages/Admin/Products";
+import UpdateProduct from "./Pages/Admin/UpdateProduct";
+import Try from "./Components/Try/Try";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/try" element={<Try />} />
         <Route path="/register" element={<Registration />} />
 
         <Route path="/dashboard" element={<Private />}>
@@ -34,6 +38,8 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/product/:slug" element={<UpdateProduct />} />
+          <Route path="admin/products" element={<Products />} />
           <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/login" element={<Login />} />

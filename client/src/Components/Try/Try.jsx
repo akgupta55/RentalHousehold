@@ -1,6 +1,6 @@
-import "./Collections.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Try.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -8,7 +8,7 @@ import NextArrow from "../NextArrow/NextArrow";
 import PrevArrow from "../PrevArrow/PrevArrow";
 import Item from "../Item/Item";
 
-function Collections() {
+const Try = () => {
   const [products, setProducts] = useState([]);
 
   const getAllProducts = async () => {
@@ -80,6 +80,6 @@ function Collections() {
       </div>
     </div>
   );
-}
+};
 
-export default Collections;
+export default Try;
