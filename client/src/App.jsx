@@ -19,13 +19,17 @@ import Dashboard from "./Pages/User/Dashboard";
 import Products from "./Pages/Admin/Products";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
 import Try from "./Components/Try/Try";
+import SearchResult from "./Pages/SearchResult/SearchResult";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/try" element={<Try />} />
+        <Route path="/search" element={<SearchResult />} />
         <Route path="/register" element={<Registration />} />
 
         <Route path="/dashboard" element={<Private />}>

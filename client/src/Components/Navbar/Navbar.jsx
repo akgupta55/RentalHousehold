@@ -1,7 +1,6 @@
 import "./Navbar.css";
 import { useState } from "react";
 import icon from "../assets/icon.png";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
@@ -11,8 +10,10 @@ import { Button } from "@mui/material";
 
 import { ClickAwayListener } from "@mui/base";
 import { useAuth } from "../../Context/Auth";
+
 import { Logout } from "@mui/icons-material";
 import toast from "react-hot-toast";
+import SearchInput from "../Form/SearchInput";
 
 function Navbar() {
   const [isOpenSelect, setisOpenSelect] = useState(false);
@@ -52,17 +53,9 @@ function Navbar() {
       </Link>
 
       <div className="container1">
-        <div className="search_box">
-          <input
-            onClick={() => alert("clicking on search bar")}
-            type="text"
-            placeholder="Search any item....."
-          />
-          <div className="search_icon">
-            <SearchOutlinedIcon />
-          </div>
-        </div>
+        <SearchInput />
       </div>
+
       <div className="cart">
         <ShoppingCartOutlinedIcon className="cartIcon" />
         <h3>Cart</h3>
