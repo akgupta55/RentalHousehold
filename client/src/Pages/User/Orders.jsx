@@ -4,7 +4,7 @@ import "./Dashboard.css";
 
 const Orders = () => {
   return (
-    <Layout title={"Your Orders"}>
+    <Layout>
       <div className="container-flui dashboard">
         <div className="row">
           <div className="col-md-3">

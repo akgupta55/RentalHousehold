@@ -6,7 +6,7 @@ import "./Dashboard.css";
 const Dashboard = () => {
   const [auth] = useAuth();
   return (
-    <Layout title={"Dashboard - Ecommerce App"}>
+    <Layout>
       <div className="container-flui dashboard">
         <div className="row">
           <div className="col-md-3">

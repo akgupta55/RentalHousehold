@@ -1,7 +1,6 @@
 import "./Navbar.css";
 import { useState } from "react";
 import icon from "../assets/icon.png";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 
@@ -14,14 +13,23 @@ import { useAuth } from "../../Context/Auth";
 import { Logout } from "@mui/icons-material";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
+import useCategory from "../../Hook/useCategory";
+import { useCart } from "../../Context/cart";
+import { Badge } from "antd";
 
 function Navbar() {
   const [isOpenSelect, setisOpenSelect] = useState(false);
+  const [isOpenSelect2, setisOpenSelect2] = useState(false);
+
+  const [cart] = useCart();
 
   const openSelect = () => {
     setisOpenSelect(!isOpenSelect);
   };
 
+  const openSelect2 = () => {
+    setisOpenSelect2(!isOpenSelect2);
+  };
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   };
@@ -40,7 +48,7 @@ function Navbar() {
   };
 
   const [auth, setAuth] = useAuth();
-
+  const categories = useCategory();
   return (
     <div className="navbar">
       <Link to="/" onClick={handleClick}>
@@ -56,10 +64,41 @@ function Navbar() {
         <SearchInput />
       </div>
 
-      <div className="cart">
-        <ShoppingCartOutlinedIcon className="cartIcon" />
-        <h3>Cart</h3>
+      <div className="category" onClick={openSelect2}>
+        <div className="ctg">
+          <h3>Category</h3>
+        </div>
+
+        {isOpenSelect2 === true && (
+          <ClickAwayListener
+            onClickAway={() => {
+              setisOpenSelect2(false);
+            }}
+          >
+            <div className="dropdown">
+              <ul>
+                {categories?.map((c) => (
+                  <li key={c._id}>
+                    <Link
+                      className="dropdown-item"
+                      to={`/category/${c.slug}`}
+                      onClick={handleClick}
+                    >
+                      <Button variant="text">{c.name}</Button>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ClickAwayListener>
+        )}
       </div>
+
+      <Badge count={cart?.length} showZero>
+        <Link to="/cart" className="nav-link cart" onClick={handleClick}>
+          Cart
+        </Link>
+      </Badge>
 
       <div className="container2">
         {!auth.user ? (
@@ -92,6 +131,7 @@ function Navbar() {
                       auth?.user?.role === 1 ? "admin" : "user"
                     }`}
                     className="dropdown-item"
+                    onClick={handleClick}
                   >
                     <Button variant="text">Dashboard</Button>
                   </Link>

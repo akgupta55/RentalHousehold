@@ -37,23 +37,101 @@
   font-weight: 200;
   color: #f2f2f2;
 }
-
-.navbar .cart {
-  display: inline-flex;
-  margin-left: 85px;
+.navbar .category {
+  cursor: pointer;
+  margin-left: 150px;
+  position: relative;
 }
-.navbar .cart .cartIcon {
-  height: 32px;
-  width: 32px;
-  color: #f2f2f2;
+.navbar .category .ctg {
+  border: 2px solid #f2f2f2;
+  padding: 4px;
+  border-radius: 5px;
+  position: relative;
 }
-.navbar .cart h3 {
+.navbar .category h3 {
   margin-top: 6px;
   font-size: 17px;
   color: #f2f2f2;
   font-weight: 200;
   padding-left: 4px;
 }
+
+.navbar .cart {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f2f2f2;
+  padding: 4px;
+  border-radius: 5px;
+  height: 48px;
+  width: 62px;
+  color: #f2f2f2;
+  cursor: pointer;
+  margin-top: -2px;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.category .dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background: #f2f2f2;
+  margin-top: 4px;
+  width: 150px;
+  right: -39px;
+  top: 100%;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.category .dropdown::before {
+  content: " ";
+  position: absolute;
+  top: -5px;
+  right: 75px;
+  height: 20px;
+  width: 20px;
+  background: #f2f2f2;
+  transform: rotate(45deg);
+}
+
+.category .dropdown ul {
+  list-style: none;
+  padding-block: 2px;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  text-align: center;
+  cursor: pointer;
+}
+
+.category .dropdown ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.category .dropdown ul li Button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 200;
+  text-transform: capitalize !important;
+  color: #717177;
+}
+.category .dropdown ul li Button:hover {
+  background: #bdbdbd;
+  color: #353535;
+}
+
 .container2 {
   margin-right: 85px;
 }

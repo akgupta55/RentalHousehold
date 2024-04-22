@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import NextArrow from "../NextArrow/NextArrow";
 import PrevArrow from "../PrevArrow/PrevArrow";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../Context/cart";
+import toast from "react-hot-toast";
 // import Item from "../Item/Item";
 
 const Try = () => {
@@ -62,6 +64,8 @@ const Try = () => {
     ],
   };
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
+
   return (
     <div className="collections">
       <h1>Our Tranding Collections</h1>
@@ -98,7 +102,15 @@ const Try = () => {
                     More Details
                   </button>
                   <button
-                    className="btn btn-secondary "
+                    className="btn btn-secondary ms-1"
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
+                      toast.success("Item Added to cart");
+                    }}
                     style={{
                       width: "8rem",
                       height: "4rem",
