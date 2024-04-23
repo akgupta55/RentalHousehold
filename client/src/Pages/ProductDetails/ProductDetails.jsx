@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../../Context/cart";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [cart, setCart] = useCart();
 
   //initalp details
   useEffect(() => {
@@ -101,7 +104,7 @@ const ProductDetails = () => {
               <div className="card-body">
                 <h5 className="card-title">{p.name.substring(0, 40)}...</h5>
                 <p className="card-text">{p.description.substring(0, 29)}...</p>
-                <p className="card-text"> $ {p.price}</p>
+                <p className="card-text"> ₹ {p.price}</p>
                 <div className="btn-f">
                   <button
                     className="btn btn-primary "
@@ -117,7 +120,15 @@ const ProductDetails = () => {
                     More Details
                   </button>
                   <button
-                    className="btn btn-secondary "
+                    className="btn btn-secondary ms-1"
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
+                      toast.success("Item Added to cart");
+                    }}
                     style={{
                       width: "8rem",
                       height: "4rem",

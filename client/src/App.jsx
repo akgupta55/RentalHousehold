@@ -22,6 +22,7 @@ import SearchResult from "./Pages/SearchResult/SearchResult";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import CategoryProduct from "./Pages/CategoryProduct/CategoryProduct";
 import CartPage from "./Pages/CartPages/CartPages";
+import AdminOrders from "./Pages/Admin/AdminOrders";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/product/:slug" element={<UpdateProduct />} />
           <Route path="admin/products" element={<Products />} />
+          <Route path="admin/orders" element={<AdminOrders />} />
           <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/login" element={<Login />} />

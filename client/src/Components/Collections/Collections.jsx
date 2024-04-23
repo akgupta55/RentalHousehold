@@ -86,7 +86,7 @@ const Try = () => {
               >
                 <h5 className="card-title">{p.name.substring(0, 40)}...</h5>
                 <p className="card-text">{p.description.substring(0, 29)}...</p>
-                <p className="card-text"> $ {p.price}</p>
+                <p className="card-text"> ₹ {p.price}</p>
                 <div className="btn-f">
                   <button
                     className="btn btn-primary "

@@ -3,12 +3,15 @@ import Layout from "../../Components/Layout/Layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./CategoryProduct.css";
+import { useCart } from "../../Context/cart";
+import toast from "react-hot-toast";
 
 const CategoryProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
+  const [cart, setCart] = useCart();
 
   useEffect(() => {
     if (params?.slug) getPrductsByCat();
@@ -49,7 +52,7 @@ const CategoryProduct = () => {
                     <p className="card-text">
                       {p.description.substring(0, 29)}...
                     </p>
-                    <p className="card-text"> $ {p.price}</p>
+                    <p className="card-text"> ₹ {p.price}</p>
                     <div className="btn-f">
                       <button
                         className="btn btn-primary "
@@ -65,7 +68,15 @@ const CategoryProduct = () => {
                         More Details
                       </button>
                       <button
-                        className="btn btn-secondary "
+                        className="btn btn-secondary ms-1"
+                        onClick={() => {
+                          setCart([...cart, p]);
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, p])
+                          );
+                          toast.success("Item Added to cart");
+                        }}
                         style={{
                           width: "8rem",
                           height: "4rem",
