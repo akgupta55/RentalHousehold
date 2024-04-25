@@ -47,11 +47,19 @@ const Try = () => {
         },
       },
       {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          // initialSlide: 2,
+        },
+      },
+      {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          // initialSlide: 2,
         },
       },
       {
@@ -72,24 +80,29 @@ const Try = () => {
       <div className="card">
         <Slider {...settings}>
           {products?.map((p) => (
-            <div key={p._id} className="card" style={{ width: "26rem" }}>
+            <div key={p._id} className="card m-3" style={{ width: "15rem" }}>
               <img
                 src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
                 alt={p.name}
               />
-              <div
-                className="card-body"
-                style={{
-                  height: "15rem",
-                }}
-              >
-                <h5 className="card-title">{p.name.substring(0, 40)}...</h5>
-                <p className="card-text">{p.description.substring(0, 29)}...</p>
-                <p className="card-text"> ₹ {p.price}</p>
-                <div className="btn-f">
+              <div className="card-body">
+                <div className="card-name-price">
+                  <h5 className="card-title">{p.name.substring(0, 18)}...</h5>
+                  <h5 className="card-title card-price">
+                    {p.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                    /m
+                  </h5>
+                </div>
+                <p className="card-text ">
+                  {p.description.substring(0, 60)}...
+                </p>
+                <div className="card-name-price">
                   <button
-                    className="btn btn-primary "
+                    className="btn btn-info "
                     style={{
                       width: "8rem",
                       height: "4rem",

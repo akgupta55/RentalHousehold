@@ -1,5 +1,4 @@
 import axios from "axios";
-import "./CategoryForm.css";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../Context/Search";
 const SearchInput = () => {
@@ -20,16 +19,20 @@ const SearchInput = () => {
   };
   return (
     <div>
-      <form className="d-flex btn-size" role="search" onSubmit={handleSubmit}>
+      <form
+        className="d-flex search-form"
+        role="search"
+        onSubmit={handleSubmit}
+      >
         <input
-          className="form-control me-2 btn-inp"
+          className="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
           value={values.keyword}
           onChange={(e) => setValues({ ...values, keyword: e.target.value })}
         />
-        <button className="btn btn-outline btn-d" type="submit">
+        <button className="btn btn-outline-secondary" type="submit">
           Search
         </button>
       </form>

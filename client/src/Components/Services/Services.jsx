@@ -8,25 +8,23 @@ function Services() {
   return (
     <div className="services">
       <h1>Our Services</h1>
-      <div className="card card-1">
-        <TbTruckDelivery className="icon" />
-        <h3>Super Fast and Free Delivery</h3>
-      </div>
-
-      <div className="card card-2">
-        <div className="card-colum-2">
+      <div className="d-flex flex-wrap crd">
+        <div className=" card-1">
+          <TbTruckDelivery className="icon" />
+          <h3>Super Fast and Free Delivery</h3>
+        </div>
+        <div className=" card-1">
           <MdSecurity className="icon" />
           <h3>Non-contact Shipping</h3>
         </div>
-        <div className="card-colum-2">
+        <div className=" card-1">
           <GiReceiveMoney className="icon" />
           <h3>Money-back Guaranteed</h3>
         </div>
-      </div>
-
-      <div className="card card-3">
-        <RiSecurePaymentLine className="icon" />
-        <h3>Super Secure Payment System</h3>
+        <div className=" card-1">
+          <RiSecurePaymentLine className="icon" />
+          <h3>Super Secure Payment System</h3>
+        </div>
       </div>
     </div>
   );

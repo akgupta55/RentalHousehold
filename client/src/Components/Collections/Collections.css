@@ -3,20 +3,44 @@
   /* padding-left: 80px; */
 }
 
+.collections {
+  flex-wrap: wrap;
+  margin-top: 80px !important;
+}
 .collections .card {
-  width: 98%;
+  background-color: rgba(128, 128, 128, 0.097);
+  margin-left: 21px;
+  margin-top: 20px;
+}
+.collections .card-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.collections h1 {
-  padding-left: 22px;
-  font-size: 25px;
-  font-weight: 700;
-  font-family: "Libre Baskerville", serif;
+.collections .card-price {
+  color: green;
+  font-weight: bold;
+}
+.collections button {
+  border-radius: 0;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.collections h1::first-letter {
-  font-size: 43px;
-  color: #c13247;
+.collections .card-text {
+  color: rgb(90, 89, 89);
+}
+
+.collections .card img:hover {
+  transform: scale(0.9);
+}
+
+.collections .card-img-top {
+  height: 300px !important;
 }
 
 .collections .slick-track {

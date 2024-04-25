@@ -1,16 +1,13 @@
 .categories {
   width: 100%;
   margin-block: 40px;
-  display: flex;
   gap: 25px;
   align-items: center;
   justify-content: center;
 }
 .categories .card {
-  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   gap: 10px;
   width: 170px;
   height: 110px;

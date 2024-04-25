@@ -9,7 +9,7 @@ function Categories() {
   const categories = useCategory();
 
   return (
-    <div className="categories">
+    <div className="categories d-flex flex-wrap">
       {categories?.map((c) => (
         <Link key={c._id} to={`/category/${c.slug}`} onClick={handleClick}>
           <div className="card">

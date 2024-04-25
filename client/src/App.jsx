@@ -23,6 +23,9 @@ import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import CategoryProduct from "./Pages/CategoryProduct/CategoryProduct";
 import CartPage from "./Pages/CartPages/CartPages";
 import AdminOrders from "./Pages/Admin/AdminOrders";
+import About from "./Pages/About.jsX";
+import Contact from "./Pages/Contact";
+import Policy from "./Pages/Policy";
 
 function App() {
   return (
@@ -53,7 +56,9 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<Forgot />} />
-
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
       </Routes>
     </>

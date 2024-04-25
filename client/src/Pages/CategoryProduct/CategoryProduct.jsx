@@ -30,12 +30,12 @@ const CategoryProduct = () => {
 
   return (
     <Layout>
-      <div className="container ctg-prd">
+      <div className="container category">
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{products?.length} result found </h6>
         <div className="row">
-          <div className="col-md-9 offset-1">
-            <div className="d-flex flex-wrap">
+          <div className="col offset-1">
+            <div className="d-flex flex-wrap cat">
               {products?.map((p) => (
                 <div
                   key={p._id}
@@ -48,14 +48,24 @@ const CategoryProduct = () => {
                     alt={p.name}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{p.name.substring(0, 30)}...</h5>
-                    <p className="card-text">
-                      {p.description.substring(0, 29)}...
+                    <div className="card-name-price">
+                      <h5 className="card-title">
+                        {p.name.substring(0, 15)}...
+                      </h5>
+                      <h5 className="card-title card-price">
+                        {p.price.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                        /m
+                      </h5>
+                    </div>
+                    <p className="card-text ">
+                      {p.description.substring(0, 60)}...
                     </p>
-                    <p className="card-text"> ₹ {p.price}</p>
-                    <div className="btn-f">
+                    <div className="card-name-price">
                       <button
-                        className="btn btn-primary "
+                        className="btn btn-info "
                         style={{
                           width: "8rem",
                           height: "4rem",

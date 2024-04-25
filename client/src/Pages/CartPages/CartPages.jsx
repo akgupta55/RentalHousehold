@@ -83,10 +83,10 @@ const CartPage = () => {
   };
   return (
     <Layout>
-      <div className="container cart-pg">
-        <div className="row">
-          <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
+      <div className="cart-page">
+        <div className="row heading">
+          <div className="col ">
+            <h1 className="text-center">
               {`Hello ${auth?.token && auth?.user?.name}`}
             </h1>
             <h4 className="text-center">
@@ -99,22 +99,27 @@ const CartPage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col ">
             {cart?.map((p) => (
-              <div className="row mb-2 p-3 card flex-row" key={p._id}>
+              <div className="row cart-details flex-row" key={p._id}>
                 <div className="col-md-4">
                   <img
                     src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
-                    width="100px"
-                    height={"100px"}
                   />
                 </div>
                 <div className="col-md-8">
                   <p>{p.name}</p>
-                  <p>{p.description.substring(0, 30)}</p>
-                  <p>Price : {p.price}</p>
+                  <p>{p.description.substring(0, 30)}...</p>
+                  <p>
+                    Price :{" "}
+                    {p.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                    /month
+                  </p>
                   <button
                     className="btn btn-danger"
                     onClick={() => removeCartItem(p._id)}

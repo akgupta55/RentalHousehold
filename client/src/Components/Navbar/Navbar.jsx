@@ -1,39 +1,17 @@
 import "./Navbar.css";
-import { useState } from "react";
-import icon from "../assets/icon.png";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link } from "react-router-dom";
-
-import LoginIcon from "@mui/icons-material/Login";
-import { Button } from "@mui/material";
-
-import { ClickAwayListener } from "@mui/base";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Context/Auth";
-
-import { Logout } from "@mui/icons-material";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../Hook/useCategory";
 import { useCart } from "../../Context/cart";
 import { Badge } from "antd";
+import icon from "../assets/icon.png";
 
 function Navbar() {
-  const [isOpenSelect, setisOpenSelect] = useState(false);
-  const [isOpenSelect2, setisOpenSelect2] = useState(false);
-
+  const [auth, setAuth] = useAuth();
   const [cart] = useCart();
-
-  const openSelect = () => {
-    setisOpenSelect(!isOpenSelect);
-  };
-
-  const openSelect2 = () => {
-    setisOpenSelect2(!isOpenSelect2);
-  };
-  const handleClick = () => {
-    window.scrollTo(0, 0); // Scrolls to the top of the page
-  };
-
+  const categories = useCategory();
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -41,130 +19,128 @@ function Navbar() {
       token: "",
     });
     localStorage.removeItem("auth");
-    toast.success("Logout Successfully", {
-      position: "bottom-center",
-      duration: 12000,
-    });
+    toast.success("Logout Successfully");
   };
 
-  const [auth, setAuth] = useAuth();
-  const categories = useCategory();
+  const handleClick = () => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  };
+
   return (
-    <div className="navbar">
-      <Link to="/" onClick={handleClick}>
-        <div className="company-logo">
-          <img src={icon} alt="" />
-          <span className="company-name">
-            Rental<span className="subName">Household</span>
-          </span>
-        </div>
-      </Link>
-
-      <div className="container1">
-        <SearchInput />
-      </div>
-
-      <div className="category" onClick={openSelect2}>
-        <div className="ctg">
-          <h3>Category</h3>
-        </div>
-
-        {isOpenSelect2 === true && (
-          <ClickAwayListener
-            onClickAway={() => {
-              setisOpenSelect2(false);
-            }}
+    <>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div className="container-fluid">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <div className="dropdown">
-              <ul>
-                {categories?.map((c) => (
-                  <li key={c._id}>
-                    <Link
-                      className="dropdown-item"
-                      to={`/category/${c.slug}`}
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <Link to="/" className="navbar-brand" onClick={handleClick}>
+              <div className="company-logo">
+                <img src={icon} alt="" />
+                <span className="company-name">
+                  Rental<span className="subName">Household</span>
+                </span>
+              </div>
+            </Link>
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <SearchInput />
+              <li className="nav-item">
+                <NavLink to="/" className="nav-link ">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to={"/categories"}
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  {categories?.map((c) => (
+                    <li key={c._id}>
+                      <Link
+                        className="dropdown-item"
+                        to={`/category/${c.slug}`}
+                        onClick={handleClick}
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              {!auth?.user ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/login"
+                      className="nav-link"
                       onClick={handleClick}
                     >
-                      <Button variant="text">{c.name}</Button>
-                    </Link>
+                      Login
+                    </NavLink>
                   </li>
-                ))}
-              </ul>
-            </div>
-          </ClickAwayListener>
-        )}
-      </div>
-
-      <Badge count={cart?.length} showZero>
-        <Link to="/cart" className="nav-link cart" onClick={handleClick}>
-          Cart
-        </Link>
-      </Badge>
-
-      <div className="container2">
-        {!auth.user ? (
-          <>
-            <div className="account" onClick={openSelect}>
-              <AccountCircleOutlinedIcon className="accountIcon" />
-              <h3>Registration/Login</h3>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="account" onClick={openSelect}>
-              <AccountCircleOutlinedIcon className="accountIcon" />
-              <h3>{auth.user.name}</h3>
-            </div>
-          </>
-        )}
-
-        {isOpenSelect === true && (
-          <ClickAwayListener
-            onClickAway={() => {
-              setisOpenSelect(false);
-            }}
-          >
-            <div className="dropdown2">
-              <ul>
-                <li>
-                  <Link
-                    to={`/dashboard/${
-                      auth?.user?.role === 1 ? "admin" : "user"
-                    }`}
-                    className="dropdown-item"
-                    onClick={handleClick}
-                  >
-                    <Button variant="text">Dashboard</Button>
-                  </Link>
-                </li>
-                {!auth.user ? (
-                  <>
-                    <li>
-                      <Link to="/login" onClick={handleClick}>
-                        <Button variant="text">
-                          <LoginIcon />
-                          &nbsp;Registration/Login
-                        </Button>
-                      </Link>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <Link to="/login" onClick={handleLogout}>
-                        <Button variant="text">
-                          <Logout />
-                          &nbsp;Logout
-                        </Button>
-                      </Link>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-          </ClickAwayListener>
-        )}
-      </div>
-    </div>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      style={{ border: "none" }}
+                    >
+                      {auth?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink
+                          to={`/dashboard/${
+                            auth?.user?.role === 1 ? "admin" : "user"
+                          }`}
+                          className="dropdown-item"
+                          onClick={handleClick}
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
+              <li className="nav-item">
+                <NavLink to="/cart" className="nav-link" onClick={handleClick}>
+                  <Badge count={cart?.length} showZero offset={[10, -5]}>
+                    Cart
+                  </Badge>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 
