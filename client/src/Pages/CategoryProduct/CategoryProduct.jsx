@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Components/Layout/Layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -34,6 +34,16 @@ const CategoryProduct = () => {
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{products?.length} result found </h6>
         <div className="row">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item" aria-current="page">
+                {category?.name}
+              </li>
+            </ol>
+          </nav>
           <div className="col offset-1">
             <div className="d-flex flex-wrap cat">
               {products?.map((p) => (

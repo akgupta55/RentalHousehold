@@ -3,7 +3,7 @@ import "./ProductDetails.css";
 import { useState, useEffect } from "react";
 
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../../Context/cart";
 import toast from "react-hot-toast";
 
@@ -44,6 +44,21 @@ const ProductDetails = () => {
   return (
     <Layout>
       <div className="row product-details">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to={`/category/${product?.category?.name}`}>
+                {product?.category?.name}
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              {product.name}
+            </li>
+          </ol>
+        </nav>
         <div className="col">
           <img
             src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
