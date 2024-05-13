@@ -43,8 +43,8 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row product-details">
-        <nav aria-label="breadcrumb">
+      <div className="row-all product-details">
+        <nav aria-label="breadcrumb" className="path">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link to="/">Home</Link>
@@ -59,48 +59,54 @@ const ProductDetails = () => {
             </li>
           </ol>
         </nav>
-        <div className="col">
-          <img
-            src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
-            className="card-img-top"
-            alt={product.name}
-          />
-        </div>
-        <div className="col-md-6 product-details-info">
-          <h1 className="text-center datails">Product Details</h1>
-          <h6>
-            <span className="datails">Name</span> : {product.name}
-          </h6>
-          <h6>
-            <span className="datails">Description</span> : {product.description}
-          </h6>
-          <h6>
-            <span className="datails">Price</span> :{" "}
-            {product?.price?.toLocaleString("en-US", {
-              style: "currency",
-              currency: "INR",
-            })}
-            /m
-          </h6>
-          <h6>
-            <span className="datails">Category</span> :{" "}
-            {product?.category?.name}
-          </h6>
-          <button
-            className="btn btn-secondary ms-1"
-            onClick={() => {
-              setCart([...cart, product]);
-              localStorage.setItem("cart", JSON.stringify([...cart, product]));
-              toast.success("Item Added to cart");
-            }}
-            style={{
-              width: "8rem",
-              height: "4rem",
-              marginLeft: "2px",
-            }}
-          >
-            ADD TO CART
-          </button>
+        <div className="row-prdet">
+          <div className="col">
+            <img
+              src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+              className="card-img-top"
+              alt={product.name}
+            />
+          </div>
+          <div className="col product-details-info">
+            <h1 className="text-center datails">Product Details</h1>
+            <h6>
+              <span className="datails">Name</span> : {product.name}
+            </h6>
+            <h6>
+              <span className="datails">Description</span> :{" "}
+              {product.description}
+            </h6>
+            <h6>
+              <span className="datails">Price</span> :{" "}
+              {product?.price?.toLocaleString("en-US", {
+                style: "currency",
+                currency: "INR",
+              })}
+              /m
+            </h6>
+            <h6>
+              <span className="datails">Category</span> :{" "}
+              {product?.category?.name}
+            </h6>
+            <button
+              className="btn btn-secondary ms-1"
+              onClick={() => {
+                setCart([...cart, product]);
+                localStorage.setItem(
+                  "cart",
+                  JSON.stringify([...cart, product])
+                );
+                toast.success("Item Added to cart");
+              }}
+              style={{
+                width: "8rem",
+                height: "4rem",
+                marginLeft: "2px",
+              }}
+            >
+              ADD TO CART
+            </button>
+          </div>
         </div>
       </div>
       <hr />

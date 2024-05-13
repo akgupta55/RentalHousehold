@@ -18,6 +18,7 @@ function Navbar() {
       user: null,
       token: "",
     });
+    window.scrollTo(0, 0);
     localStorage.removeItem("auth");
     toast.success("Logout Successfully");
   };
@@ -28,7 +29,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -124,12 +125,31 @@ function Navbar() {
                   </li>
                 </>
               )}
+
               <li className="nav-item">
-                <NavLink to="/cart" className="nav-link" onClick={handleClick}>
-                  <Badge count={cart?.length} showZero offset={[10, -5]}>
-                    Cart
-                  </Badge>
-                </NavLink>
+                {auth?.user?.role === 1 ? (
+                  <>
+                    <div
+                      to="/cart"
+                      className="nav-link text-decoration-line-through"
+                      onClick={handleClick}
+                    >
+                      Cart
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <NavLink
+                      to="/cart"
+                      className="nav-link"
+                      onClick={handleClick}
+                    >
+                      <Badge count={cart?.length} showZero offset={[10, -5]}>
+                        Cart
+                      </Badge>
+                    </NavLink>
+                  </>
+                )}
               </li>
             </ul>
           </div>

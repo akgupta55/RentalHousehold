@@ -55,6 +55,7 @@ const CategoryProduct = () => {
                   <img
                     src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
+                    style={{ height: "2rem !important" }}
                     alt={p.name}
                   />
                   <div className="card-body">
@@ -70,9 +71,9 @@ const CategoryProduct = () => {
                         /m
                       </h5>
                     </div>
-                    <p className="card-text ">
+                    {/* <p className="card-text ">
                       {p.description.substring(0, 60)}...
-                    </p>
+                    </p> */}
                     <div className="card-name-price">
                       <button
                         className="btn btn-info "
