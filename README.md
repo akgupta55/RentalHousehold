@@ -1,4 +1,4 @@
-# LIBRARY-MANAGEMENT-SYSTEM (MERN)
+# RENTAL HOUSEHOLD (MERN)
 
 This is a web application built using the MERN (MongoDB, Express.js, React, Node.js) stack. It is a Rental website where you can rent household items.
 
